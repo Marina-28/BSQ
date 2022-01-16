@@ -36,10 +36,10 @@ int		valid_3(char	*map, int	len);
 t_prm	*get_prm(char	*map, int	len, int	numb);
 t_crd	*create_crd(int	**mat, char	**arr, t_prm	*p);
 
+void	arr_del(char	**arr, t_prm	*p);
 char	**arr_crt(char	*map, t_prm	*p);
 void	arr_fill(char	**arr, char	*map, t_prm	*p);
 void	arr_del_ind(char	**arr, int	i);
-void	arr_del(char	**arr, t_prm	*p);
 
 int		**mat_crt(char	**arr, char	*map, t_prm	*p);
 void	mat_fill(int	**mat, char	*map, t_prm	*p);
