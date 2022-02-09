@@ -14,7 +14,7 @@ int	ft_strlen(char	*str, char	c, int	i)
 	int	len;
 
 	len = 0;
-	while (str[i] != c)
+	while (str[i] != c && str[i] != '\0')
 	{
 		len++;
 		i++;
@@ -22,7 +22,7 @@ int	ft_strlen(char	*str, char	c, int	i)
 	return (len);
 }
 
-int	ft_atoi(char	*map, int	len)
+int	ft_atoi(char *map, int len)
 {
 	int	i;
 	int	n;

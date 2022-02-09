@@ -1,6 +1,6 @@
 #include "bsq.h"
 
-t_prm	*get_prm(char	*map, int	len, int	numb)
+t_prm	*get_prm(char *map, int len, int numb)
 {
 	t_prm	*p;
 

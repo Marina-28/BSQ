@@ -2,7 +2,7 @@
 
 char	*reader(char	*file)
 {
-	int		f;
+	int		fd;
 	int		i;
 	int		n;
 	char	buf[4096];
@@ -10,21 +10,21 @@ char	*reader(char	*file)
 
 	i = 1;
 	n = 0;
-	f = open(file, O_RDONLY);
-	if (f == -1)
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
 		return (NULL);
 	while (i)
 	{
-		i = read(f, buf, 4095);
+		i = read(fd, buf, 4096);
 		n = n + i;
 	}
-	close (f);
+	close (fd);
 	map = (char *)malloc((n + 1) * sizeof(char));
 	if (map == NULL)
 		return (NULL);
-	f = open(file, O_RDONLY);
-	i = read(f, map, n);
-	close (f);
+	fd = open(file, O_RDONLY);
+	i = read(fd, map, n);
+	close (fd);
 	map[n + 1] = '\0';
 	return (map);
 }
@@ -38,7 +38,7 @@ char	*get_file(void)
 	filename = "newfile";
 	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fd == -1)
-		return (0);
+		return (NULL);
 	while (read(0, &buf, 1))
 		write(fd, &buf, 1);
 	close (fd);

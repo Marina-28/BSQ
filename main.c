@@ -12,8 +12,8 @@ void	bsq_run(char	*map)
 	if (valid_1(map, len) == 0)
 	{
 		numb = ft_atoi(map, len);
-		if ((valid_2(map, len, numb) == 0) && (valid_3(map, len) == 0))
-		{	
+		if ((valid_2(map, len, numb) == 0))
+		{
 			p = get_prm(map, len, numb);
 			arr = arr_crt(map, p);
 			arr_fill(arr, map, p);
@@ -39,13 +39,17 @@ int	main(int	argc, char	**argv)
 	if (argc == 1)
 	{
 		filenew = get_file();
+		if (filenew == NULL)
+			return (0);
 		map = reader(filenew);
-		bsq_run(map);
+		if (map != NULL)
+			bsq_run(map);
 	}
 	while (i < argc)
 	{
 		map = reader(argv[i]);
-		bsq_run(map);
+		if (map != NULL)
+			bsq_run(map);
 		i++;
 	}
 	return (0);

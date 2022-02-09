@@ -1,6 +1,6 @@
 #include "bsq.h"
 
-void	arr_del(char	**arr, t_prm	*p)
+void	arr_del(char **arr, t_prm *p)
 {
 	int	i;
 
@@ -13,7 +13,7 @@ void	arr_del(char	**arr, t_prm	*p)
 	free(arr);
 }
 
-void	arr_del_ind(char	**arr, int	i)
+void	arr_del_ind(char **arr, int	i)
 {
 	while (i >= 1)
 	{

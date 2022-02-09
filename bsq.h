@@ -27,11 +27,10 @@ char	*get_file(void);
 void	ft_putstr(char	*str);
 int		ft_strlen(char	*str, char	c, int	i);
 int		ft_atoi(char	*map, int	len);
-char	*ft_error(char	*map);
+void	ft_error(char	*map);
 
 int		valid_1(char	*map, int	len);
 int		valid_2(char	*map, int	len, int	numb);
-int		valid_3(char	*map, int	len);
 
 t_prm	*get_prm(char	*map, int	len, int	numb);
 t_crd	*create_crd(int	**mat, char	**arr, t_prm	*p);
