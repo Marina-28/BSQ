@@ -1,15 +1,18 @@
 #include "bsq.h"
 
-void	ft_putstr(char	*str)
+void	ft_putstr(char *str)
 {
-	while (*str != '\0')
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
 	{
-		write(1, str, 1);
-		str++;
+		write(1, &str[i], 1);
+		i++;
 	}
 }
 
-int	ft_strlen(char	*str, char	c, int	i)
+int	ft_strlen(char *str, char c, int i)
 {
 	int	len;
 
@@ -39,7 +42,7 @@ int	ft_atoi(char *map, int len)
 	return (n);
 }
 
-int	find_min(int	a, int	b, int	c)
+int	find_min(int a, int b, int c)
 {
 	int	min_numb;
 

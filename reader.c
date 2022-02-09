@@ -25,7 +25,7 @@ char	*reader(char	*file)
 	fd = open(file, O_RDONLY);
 	i = read(fd, map, n);
 	close (fd);
-	map[n + 1] = '\0';
+	map[n] = '\0';
 	return (map);
 }
 
@@ -51,10 +51,11 @@ char	**arr_crt(char	*map, t_prm	*p)
 	char	**arr;
 
 	i = 0;
-	arr = (char **)malloc((p->nmb + 2) * sizeof(char *));
+	arr = (char **)malloc((p->nmb + 1) * sizeof(char *));
 	if (arr == NULL)
 	{
 		free(map);
+		free(p);
 		return (NULL);
 	}
 	while (i < p->nmb)
@@ -62,13 +63,14 @@ char	**arr_crt(char	*map, t_prm	*p)
 		arr[i] = malloc((p->len + 1) * sizeof(char));
 		if (arr[i] == NULL)
 		{
-			arr_del_ind(arr, i);
+			arr_del(arr);
 			free(p);
 			free(map);
 			return (NULL);
 		}
 		i++;
 	}
+	arr[i] = NULL;
 	return (arr);
 }
 

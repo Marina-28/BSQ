@@ -1,10 +1,28 @@
 #include "bsq.h"
 
-void	bsq_run(char	*map)
+void	bsq(char *map, int numb, int len)
 {
 	char	**arr;
 	int		**mat;
 	t_prm	*p;
+
+	p = get_prm(map, len, numb);
+	if (p == NULL)
+		return ;
+	arr = arr_crt(map, p);
+	if (arr == NULL)
+		return ;
+	arr_fill(arr, map, p);
+	mat = mat_crt(arr, map, p);
+	if (mat == NULL)
+		return ;
+	mat_fill(mat, map, p);
+	ft_counter(mat, p);
+	print_sqr(arr, p, get_max_crd(mat, arr, p));
+}
+
+void	bsq_run(char	*map)
+{
 	int		len;
 	int		numb;
 
@@ -13,15 +31,7 @@ void	bsq_run(char	*map)
 	{
 		numb = ft_atoi(map, len);
 		if ((valid_2(map, len, numb) == 0))
-		{
-			p = get_prm(map, len, numb);
-			arr = arr_crt(map, p);
-			arr_fill(arr, map, p);
-			mat = mat_crt(arr, map, p);
-			mat_fill(mat, map, p);
-			ft_counter(mat, p);
-			print_sqr(arr, p, get_max_crd(mat, arr, p));
-		}
+			bsq(map, numb, len);
 		else
 			ft_error(map);
 	}
@@ -29,7 +39,7 @@ void	bsq_run(char	*map)
 		ft_error(map);
 }
 
-int	main(int	argc, char	**argv)
+int	main(int argc, char **argv)
 {
 	char	*map;
 	char	*filenew;

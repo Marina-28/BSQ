@@ -42,7 +42,7 @@ int	valid_3(char *map, int len)
 	a = 0;
 	while (map[i] != '\0')
 	{
-		while (map[i] != '\n')
+		while (map[i] != '\n' && map[i] != '\0')
 		{
 			if (map[i] != map[len - 2] && map[i] != map[len - 3])
 				return (1);

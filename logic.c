@@ -5,28 +5,26 @@ int	**mat_crt(char	**arr, char	*map, t_prm	*p)
 	int	i;
 	int	**mat;
 
-	i = 0;
+	i = -1;
 	mat = (int **)malloc((p->nmb + 1) * sizeof(int *));
 	if (mat == NULL)
 	{
-		arr_del(arr, p);
+		arr_del(arr);
 		free(p);
 		free(map);
 		return (NULL);
 	}
-	while (i < p->nmb)
+	while (++i < p->nmb)
 	{
 		mat[i] = malloc (p->len * sizeof(int *));
 		if (mat[i] == NULL)
 		{
-			mat_del_ind (mat, i);
-			arr_del(arr, p);
-			free(p);
-			free(map);
-			return (NULL);
+			mat_del(mat);
+			arr_del(arr);
+			return ((int **)ft_free(map, p));
 		}
-		i++;
 	}
+	mat[i] = NULL;
 	return (mat);
 }
 
@@ -56,7 +54,7 @@ void	mat_fill(int	**mat, char	*map, t_prm	*p)
 	free(map);
 }
 
-void	ft_counter(int	**mat, t_prm	*p)
+void	ft_counter(int **mat, t_prm *p)
 {
 	int	i;
 	int	j;
@@ -90,7 +88,7 @@ t_crd	*get_max_crd(int	**mat, char	**arr, t_prm	*p)
 	t_crd	*k;
 
 	i = 0;
-	k = create_crd(mat, arr, p);
+	k = create_crd(mat, arr);
 	k->max = 0;
 	while (i < p->nmb)
 	{
@@ -107,7 +105,7 @@ t_crd	*get_max_crd(int	**mat, char	**arr, t_prm	*p)
 		}
 		i++;
 	}
-	mat_del(mat, p);
+	mat_del(mat);
 	return (k);
 }
 
@@ -134,6 +132,6 @@ void	print_sqr(char	**arr, t_prm	*p, t_crd	*k)
 		i++;
 	}
 	free(k);
-	arr_del(arr, p);
+	arr_del(arr);
 	free(p);
 }
